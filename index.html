@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Babu ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family: "Segoe UI", sans-serif;
+    background:linear-gradient(135deg,#ffe4ec,#fff5f8,#ffd6e3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:#5a2535;
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:20px;
+    animation:float 7s linear infinite;
+    opacity:.7;
+    pointer-events:none;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    20%{opacity:.8;}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.container{
+    width:90%;
+    max-width:650px;
+    padding:40px 25px;
+    text-align:center;
+    background:rgba(255,255,255,.55);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(160,50,80,.18);
+    position:relative;
+    z-index:2;
+}
+
+.small{
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#a85b70;
+}
+
+h1{
+    font-size:clamp(42px,10vw,72px);
+    margin:10px 0;
+    color:#9e3455;
+    font-family:cursive;
+}
+
+.subtitle{
+    font-size:18px;
+    line-height:1.7;
+    margin:15px auto 25px;
+    max-width:500px;
+}
+
+.line{
+    width:80px;
+    height:3px;
+    background:#d95b7b;
+    margin:20px auto;
+    border-radius:10px;
+}
+
+.message{
+    font-size:16px;
+    line-height:1.8;
+    color:#71384a;
+}
+
+button{
+    margin-top:28px;
+    border:none;
+    padding:14px 28px;
+    border-radius:50px;
+    background:#b83e61;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(184,62,97,.3);
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 15px 30px rgba(184,62,97,.4);
+}
+
+.hidden{
+    display:none;
+    margin-top:25px;
+    font-size:18px;
+    line-height:1.8;
+    animation:show .7s ease;
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.signature{
+    margin-top:25px;
+    font-family:cursive;
+    font-size:24px;
+    color:#a83255;
+}
+
+.corner{
+    position:absolute;
+    font-size:30px;
+}
+
+.c1{top:20px;left:25px;}
+.c2{top:20px;right:25px;}
+.c3{bottom:20px;left:25px;}
+.c4{bottom:20px;right:25px;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="corner c1">♡</div>
+    <div class="corner c2">♡</div>
+    <div class="corner c3">♡</div>
+    <div class="corner c4">♡</div>
+
+    <div class="small">A little something for</div>
+
+    <h1>My Babu ❤️</h1>
+
+    <div class="line"></div>
+
+    <p class="subtitle">
+        Tum meri life ka woh beautiful part ho
+        jiske bina sab kuch thoda sa incomplete lagta hai. 🥹❤️
+    </p>
+
+    <p class="message">
+        Tumhari smile meri favourite cheez hai,<br>
+        tumhari baatein meri favourite memories hain,<br>
+        aur tumhara saath... meri favourite feeling. 💕
+    </p>
+
+    <button onclick="showLove()">
+        Ek chhota sa surprise 💌
+    </button>
+
+    <div id="loveMessage" class="hidden">
+        <p>
+            Bas itna kehna tha...<br><br>
+
+            <b>Thank you for being in my life. ❤️</b><br>
+            Tum jitni special ho, shayad words kabhi properly
+            explain hi na kar paayein. 🌸
+            <br><br>
+
+            Hamesha aise hi smile karti rehna...
+            kyunki tumhari smile bahut precious hai. 🫶
+        </p>
+
+        <div class="signature">
+            — Tumhara ❤️
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+/* Surprise message */
+function showLove(){
+    const msg = document.getElementById("loveMessage");
+
+    if(msg.style.display === "block"){
+        msg.style.display = "none";
+    }else{
+        msg.style.display = "block";
+    }
+}
+
+/* Floating hearts */
+const hearts = ["❤️","💕","💗","💖","💓","♡"];
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left =
+        Math.random()*100 + "vw";
+
+    heart.style.animationDuration =
+        (5 + Math.random()*5) + "s";
+
+    heart.style.fontSize =
+        (14 + Math.random()*20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+</body>
+</html>
